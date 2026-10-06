@@ -1,0 +1,115 @@
+{
+  "auth": {
+    "signIn": "Sign in", "signUp": "Create account", "signOut": "Sign out",
+    "username": "Username", "password": "Password",
+    "invalid": "Invalid username or password.", "duplicate": "Username already registered.",
+    "testOnly": "Use fictional credentials only in this test environment."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "vehicles": "Fleet",
+    "reports": "Reports",
+    "alerts": "Alerts",
+    "cases": "Cases"
+  },
+  "common": {
+    "search": "Search",
+    "all": "All",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "view": "View",
+    "retry": "Retry",
+    "loading": "Loading records…",
+    "empty": "No records found.",
+    "actions": "Actions",
+    "back": "Back",
+    "saved": "Changes saved",
+    "error": "Unable to save. Check your connection and try again.",
+    "required": "Complete the required fields.",
+    "simulated": "Test environment · Simulated data",
+    "language": "Language",
+    "menu": "Open navigation"
+  },
+  "risk": {
+    "high": "Critical",
+    "medium": "Under observation",
+    "low": "No findings"
+  },
+  "status": {
+    "draft": "Draft",
+    "reviewed": "Reviewed",
+    "open": "Open",
+    "inProgress": "In progress",
+    "resolved": "Resolved"
+  },
+  "dashboard": {
+    "title": "Control panel",
+    "subtitle": "Fleet status and observation tracking",
+    "total": "Total vehicles",
+    "critical": "Critical vehicles",
+    "monitored": "Monitored",
+    "open": "Open cases",
+    "fleet": "Fleet · Quick view",
+    "recent": "Recent cases",
+    "distribution": "Risk distribution",
+    "goFleet": "View fleet"
+  },
+  "vehicle": {
+    "add": "Add vehicle",
+    "edit": "Edit vehicle",
+    "plate": "License plate",
+    "type": "Type",
+    "site": "Site",
+    "owner": "Owner",
+    "risk": "Risk",
+    "monitored": "Monitoring",
+    "active": "Active",
+    "inactive": "Inactive",
+    "search": "Search license plate, owner or site",
+    "request": "Request report"
+  },
+  "report": {
+    "title": "Vehicle reports",
+    "request": "Request report",
+    "vehicle": "Vehicle",
+    "date": "Requested at",
+    "status": "Status",
+    "detail": "Report detail",
+    "checklist": "Consulted sources · Checklist",
+    "add": "Register evidence",
+    "source": "Source",
+    "sourceUrl": "Source URL",
+    "dateChecked": "Consultation date",
+    "result": "Result",
+    "evidence": "Evidence URL",
+    "summary": "Finding or observation",
+    "review": "Mark as reviewed",
+    "none": "No evidence has been registered.",
+    "createCase": "Create case",
+    "reviewError": "Register at least one evidence before reviewing the report.",
+    "invalidUrl": "Use a valid http or https URL."
+  },
+  "case": {
+    "title": "Alerts and resolution cases",
+    "add": "Create case",
+    "titleField": "Observation",
+    "responsible": "Responsible person",
+    "due": "Due date",
+    "evidence": "Closing evidence URL",
+    "note": "Closing note",
+    "close": "Close case",
+    "severity": "Severity",
+    "status": "Status"
+  },
+  "errors": {
+    "load": "Unable to connect to the API. Make sure JSON Server is running.",
+    "plate": "License plate must use the ABC-123 format.",
+    "duplicate": "License plate already registered.",
+    "evidence": "Closing requires evidence and a closing note."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "back": "Back to dashboard"
+  }
+}

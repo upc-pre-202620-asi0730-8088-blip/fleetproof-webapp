@@ -1,0 +1,115 @@
+{
+  "auth": {
+    "signIn": "Iniciar sesión", "signUp": "Crear cuenta", "signOut": "Cerrar sesión",
+    "username": "Usuario", "password": "Contraseña",
+    "invalid": "Usuario o contraseña incorrectos.", "duplicate": "El usuario ya está registrado.",
+    "testOnly": "Utiliza únicamente credenciales ficticias en este entorno de prueba."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "vehicles": "Flota",
+    "reports": "Reportes",
+    "alerts": "Alertas",
+    "cases": "Casos"
+  },
+  "common": {
+    "search": "Buscar",
+    "all": "Todos",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "view": "Ver",
+    "retry": "Reintentar",
+    "loading": "Cargando registros…",
+    "empty": "No se encontraron registros.",
+    "actions": "Acciones",
+    "back": "Volver",
+    "saved": "Cambios guardados",
+    "error": "No se pudo guardar. Revisa la conexión e inténtalo nuevamente.",
+    "required": "Completa los campos obligatorios.",
+    "simulated": "Entorno de prueba · Datos simulados",
+    "language": "Idioma",
+    "menu": "Abrir navegación"
+  },
+  "risk": {
+    "high": "Crítico",
+    "medium": "En observación",
+    "low": "Sin novedad"
+  },
+  "status": {
+    "draft": "Borrador",
+    "reviewed": "Revisado",
+    "open": "Abierto",
+    "inProgress": "En resolución",
+    "resolved": "Resuelto"
+  },
+  "dashboard": {
+    "title": "Panel de control",
+    "subtitle": "Estado de la flota y seguimiento de observaciones",
+    "total": "Total vehículos",
+    "critical": "Vehículos críticos",
+    "monitored": "Monitoreados",
+    "open": "Casos abiertos",
+    "fleet": "Flota · Vista rápida",
+    "recent": "Casos recientes",
+    "distribution": "Distribución de riesgo",
+    "goFleet": "Ver flota"
+  },
+  "vehicle": {
+    "add": "Agregar vehículo",
+    "edit": "Editar vehículo",
+    "plate": "Placa",
+    "type": "Tipo",
+    "site": "Sede",
+    "owner": "Propietario",
+    "risk": "Riesgo",
+    "monitored": "Monitoreo",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "search": "Buscar placa, propietario o sede",
+    "request": "Solicitar reporte"
+  },
+  "report": {
+    "title": "Reportes vehiculares",
+    "request": "Solicitar reporte",
+    "vehicle": "Vehículo",
+    "date": "Fecha de solicitud",
+    "status": "Estado",
+    "detail": "Detalle del reporte",
+    "checklist": "Fuentes consultadas · Checklist",
+    "add": "Registrar evidencia",
+    "source": "Fuente",
+    "sourceUrl": "URL de la fuente",
+    "dateChecked": "Fecha de consulta",
+    "result": "Resultado",
+    "evidence": "URL de evidencia",
+    "summary": "Hallazgo u observación",
+    "review": "Marcar como revisado",
+    "none": "No se han registrado evidencias.",
+    "createCase": "Crear caso",
+    "reviewError": "Registra al menos una evidencia antes de revisar el reporte.",
+    "invalidUrl": "Usa una URL válida con http o https."
+  },
+  "case": {
+    "title": "Alertas y casos de resolución",
+    "add": "Crear caso",
+    "titleField": "Observación",
+    "responsible": "Responsable",
+    "due": "Fecha límite",
+    "evidence": "URL de evidencia de cierre",
+    "note": "Nota de cierre",
+    "close": "Cerrar caso",
+    "severity": "Severidad",
+    "status": "Estado"
+  },
+  "errors": {
+    "load": "No se pudo conectar con la API. Comprueba que JSON Server esté activo.",
+    "plate": "La placa debe tener el formato ABC-123.",
+    "duplicate": "La placa ya está registrada.",
+    "evidence": "Para cerrar el caso, registra evidencia y nota de cierre."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "back": "Volver al dashboard"
+  }
+}
