@@ -19,7 +19,7 @@ export class MockApiServer {
 
     #ensureDatabaseFile() {
         if (!fs.existsSync(this.#config.dbPath)) {
-            fs.writeFileSync(this.#config.dbPath, JSON.stringify({vehicles: [], reports: [], cases: []}, null, 2));
+            fs.writeFileSync(this.#config.dbPath, JSON.stringify({users: [], vehicles: [], reports: [], cases: [], subscriptions: [], fleets: [], assignments: [], monitorings: [], alerts: []}, null, 2));
         }
     }
 

@@ -8,5 +8,9 @@ interface ImportMetaEnv {
   readonly VITE_SIGNUP_ENDPOINT_PATH?: string;
   readonly VITE_USERS_ENDPOINT_PATH?: string;
   readonly VITE_PRIME_UI_LICENSE_KEY?: string;
+  readonly VITE_SUBSCRIPTIONS_ENDPOINT_PATH?: string;
+  readonly VITE_FLEETS_ENDPOINT_PATH?: string;
+  readonly VITE_ASSIGNMENTS_ENDPOINT_PATH?: string;
+  readonly VITE_MONITORINGS_ENDPOINT_PATH?: string;
+  readonly VITE_ALERTS_ENDPOINT_PATH?: string;
 }
-

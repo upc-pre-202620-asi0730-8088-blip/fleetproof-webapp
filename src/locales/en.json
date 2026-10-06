@@ -1,8 +1,12 @@
 {
   "auth": {
-    "signIn": "Sign in", "signUp": "Create account", "signOut": "Sign out",
-    "username": "Username", "password": "Password",
-    "invalid": "Invalid username or password.", "duplicate": "Username already registered.",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "signOut": "Sign out",
+    "username": "Username",
+    "password": "Password",
+    "invalid": "Invalid username or password.",
+    "duplicate": "Username already registered.",
     "testOnly": "Use fictional credentials only in this test environment."
   },
   "nav": {
@@ -10,7 +14,10 @@
     "vehicles": "Fleet",
     "reports": "Reports",
     "alerts": "Alerts",
-    "cases": "Cases"
+    "cases": "Cases",
+    "fleets": "Fleets",
+    "monitoring": "Monitoring",
+    "subscriptions": "Subscriptions"
   },
   "common": {
     "search": "Search",
@@ -111,5 +118,35 @@
   "notFound": {
     "title": "Page not found",
     "back": "Back to dashboard"
+  },
+  "contexts": {
+    "subscriptions": "Subscriptions",
+    "fleets": "Fleets",
+    "monitoring": "Monitoring",
+    "fleet": "Fleet management",
+    "service": "Service",
+    "status": "Status",
+    "payment": "Payment",
+    "actions": "Actions",
+    "pending": "Pending",
+    "active": "Active",
+    "completed": "Completed",
+    "failed": "Failed",
+    "paymentNotice": "Simulated payment validation. No money is processed and Taypi is not integrated.",
+    "paySuccess": "Simulate valid payment",
+    "payFailure": "Simulate failed payment",
+    "subscriptionRequired": "An active subscription is required for this service.",
+    "fleetName": "Fleet name",
+    "createFleet": "Create fleet",
+    "responsible": "Responsible person",
+    "assign": "Assign vehicle",
+    "alreadyAssigned": "Vehicle already has a fleet assignment.",
+    "alreadyMonitored": "Vehicle already has active monitoring.",
+    "checkNow": "Check now",
+    "monitoringNotice": "Local data checks while this view stays open. No server worker or official source queries.",
+    "interval": "Interval (minutes)",
+    "activate": "Activate monitoring",
+    "lastCheck": "Last check",
+    "nextCheck": "Next check"
   }
 }

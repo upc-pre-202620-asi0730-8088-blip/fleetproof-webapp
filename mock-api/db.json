@@ -105,5 +105,78 @@
       "evidence": "",
       "note": ""
     }
+  ],
+  "subscriptions": [
+    {
+      "id": 1,
+      "service": "monitoring",
+      "status": "active",
+      "paymentStatus": "completed"
+    },
+    {
+      "id": 2,
+      "service": "fleet",
+      "status": "active",
+      "paymentStatus": "completed"
+    }
+  ],
+  "fleets": [
+    {
+      "name": "Flota de demostración",
+      "id": 1
+    }
+  ],
+  "assignments": [
+    {
+      "fleetId": 1,
+      "vehicleId": 1,
+      "responsible": "Responsable de demostración",
+      "id": 1
+    }
+  ],
+  "monitorings": [
+    {
+      "id": 1,
+      "vehicleId": 1,
+      "intervalMinutes": 60,
+      "status": "active",
+      "snapshot": {
+        "plate": "ABC-123",
+        "risk": "high",
+        "site": "Lima Norte",
+        "owner": "Orion S.A.",
+        "type": "Bus urbano"
+      },
+      "lastCheckedAt": "2026-10-06T22:50:13.297Z",
+      "nextCheckAt": "2026-10-06T23:50:13.297Z"
+    }
+  ],
+  "alerts": [
+    {
+      "monitoringId": 1,
+      "vehicleId": 1,
+      "changes": [
+        {
+          "field": "owner",
+          "before": "Orion S.A.",
+          "after": "Responsable simulado actualizado"
+        }
+      ],
+      "createdAt": "2026-10-06T22:49:03.741Z",
+      "id": 1
+    },
+    {
+      "monitoringId": 1,
+      "vehicleId": 1,
+      "changes": [
+        {
+          "field": "owner",
+          "before": "Responsable simulado actualizado",
+          "after": "Orion S.A."
+        }
+      ],
+      "createdAt": "2026-10-06T22:50:13.291Z",
+      "id": 2
+    }
   ]
 }

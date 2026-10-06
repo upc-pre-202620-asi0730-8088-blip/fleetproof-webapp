@@ -51,3 +51,28 @@ Antes de desplegar debe integrarse autenticación/autorización y configurar VIT
 Rama local inicial: feature/sprint2-frontend-foundation. Repositorio remoto inicialmente vacío.
 La inicialización de main/develop y publicación se coordinarán con el equipo antes de integrar nuevas historias.
 Los cambios posteriores se desarrollan en feature por historia y se integran mediante Pull Request a develop.
+
+## Bounded Contexts del Capítulo IV
+
+El programa organiza el alcance local en los seis contextos del informe. Cada módulo conserva las capas domain, application, infrastructure y presentation de la guía.
+
+| Contexto del reporte | Módulo | Responsabilidad implementada |
+| --- | --- | --- |
+| User Management | user-management | Registro y autenticación simulada, sesión y guard de rutas. |
+| Subscription Management | subscription-management | Solicitud de servicios y estados de pago simulado. Solo un pago completado activa la suscripción. |
+| Vehicle Information | vehicle-information | Registro y edición de vehículos, placas, búsqueda y datos locales. |
+| Report Management | report-management | Solicitud, checklist, trazabilidad de evidencias y revisión de reportes locales. |
+| Vehicle Monitoring | vehicle-monitoring | Programación por intervalo, snapshots, detección de cambios y alertas persistidas. |
+| Fleet Management | fleet-management | Flotas, asignaciones, responsables, riesgo por vehículo y casos con cierre respaldado. |
+
+Los casos antes ubicados en resolution pertenecen ahora a Fleet Management; no se introduce un séptimo contexto. El estado de monitoreo mostrado por el dashboard y la lista de vehículos procede de Vehicle Monitoring, no de una casilla editable del vehículo. Las relaciones entre contextos utilizan identificadores y recursos explícitos mediante assemblers. Los imports anteriores fueron actualizados, manteniendo las URLs existentes de vehículos, reportes y casos.
+
+Flotas y monitoreo requieren una suscripción activa del servicio correspondiente. El mock comparte sus datos entre usuarios y no ofrece autorización real; esa validación local no sustituye controles del backend.
+
+## Límites Pendientes del Backend
+
+La separación de los seis contextos no implica que todas las funcionalidades del informe estén terminadas. Taypi, roles y autorización del servidor, consultas a fuentes oficiales y sus reintentos, reportes oficiales completos/de tránsito/SUNARP y notificaciones externas siguen pendientes.
+
+El monitoreo compara datos de JSON Server. Mientras su vista permanece abierta, revisa cada 15 segundos si venció el intervalo configurado y realiza la comparación correspondiente; también permite una revisión manual. Al cerrar la vista se detiene el temporizador. No reemplaza el MonitoringBackgroundWorker del servidor descrito en el reporte ni garantiza ejecución con el navegador cerrado.
+
+Los registros de demostración de suscripciones, flota, asignación y alertas son ficticios. Se verificaron pago fallido sin activación, pago completado con activación, asignación de responsable, revisión sin cambios y alerta con valores anteriores y nuevos.

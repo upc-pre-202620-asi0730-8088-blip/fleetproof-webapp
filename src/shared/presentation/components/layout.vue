@@ -2,14 +2,16 @@
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import LanguageSwitcher from './language-switcher.vue';
-import AuthenticationSection from '../../../iam/presentation/components/authentication-section.vue';
+import AuthenticationSection from '../../../user-management/presentation/components/authentication-section.vue';
 import { useRoute } from 'vue-router';
 const route = useRoute();
 const { t } = useI18n();
 const expanded = ref(false);
 const items = [
   { key: 'dashboard', icon: 'pi-chart-bar' }, { key: 'vehicles', icon: 'pi-car' },
-  { key: 'reports', icon: 'pi-file' }, { key: 'alerts', icon: 'pi-bell' }, { key: 'cases', icon: 'pi-briefcase' }
+  { key: 'reports', icon: 'pi-file' }, { key: 'fleets', icon: 'pi-truck' },
+  { key: 'monitoring', icon: 'pi-eye' }, { key: 'subscriptions', icon: 'pi-credit-card' },
+  { key: 'alerts', icon: 'pi-bell' }, { key: 'cases', icon: 'pi-briefcase' }
 ];
 </script>
 <template>

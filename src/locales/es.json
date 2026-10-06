@@ -1,8 +1,12 @@
 {
   "auth": {
-    "signIn": "Iniciar sesión", "signUp": "Crear cuenta", "signOut": "Cerrar sesión",
-    "username": "Usuario", "password": "Contraseña",
-    "invalid": "Usuario o contraseña incorrectos.", "duplicate": "El usuario ya está registrado.",
+    "signIn": "Iniciar sesión",
+    "signUp": "Crear cuenta",
+    "signOut": "Cerrar sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "invalid": "Usuario o contraseña incorrectos.",
+    "duplicate": "El usuario ya está registrado.",
     "testOnly": "Utiliza únicamente credenciales ficticias en este entorno de prueba."
   },
   "nav": {
@@ -10,7 +14,10 @@
     "vehicles": "Flota",
     "reports": "Reportes",
     "alerts": "Alertas",
-    "cases": "Casos"
+    "cases": "Casos",
+    "fleets": "Flotas",
+    "monitoring": "Monitoreo",
+    "subscriptions": "Suscripciones"
   },
   "common": {
     "search": "Buscar",
@@ -111,5 +118,35 @@
   "notFound": {
     "title": "Página no encontrada",
     "back": "Volver al dashboard"
+  },
+  "contexts": {
+    "subscriptions": "Suscripciones",
+    "fleets": "Flotas",
+    "monitoring": "Monitoreo",
+    "fleet": "Gestión de flotas",
+    "service": "Servicio",
+    "status": "Estado",
+    "payment": "Pago",
+    "actions": "Acciones",
+    "pending": "Pendiente",
+    "active": "Activo",
+    "completed": "Completado",
+    "failed": "Fallido",
+    "paymentNotice": "Validación de pago simulada. No se procesa dinero ni se integra Taypi.",
+    "paySuccess": "Simular pago válido",
+    "payFailure": "Simular pago fallido",
+    "subscriptionRequired": "Se requiere una suscripción activa para este servicio.",
+    "fleetName": "Nombre de flota",
+    "createFleet": "Crear flota",
+    "responsible": "Responsable",
+    "assign": "Asignar vehículo",
+    "alreadyAssigned": "El vehículo ya tiene una asignación de flota.",
+    "alreadyMonitored": "El vehículo ya tiene monitoreo activo.",
+    "checkNow": "Revisar ahora",
+    "monitoringNotice": "Revisiones de datos locales mientras esta vista permanece abierta. Sin worker en servidor ni consultas oficiales.",
+    "interval": "Intervalo (minutos)",
+    "activate": "Activar monitoreo",
+    "lastCheck": "Última revisión",
+    "nextCheck": "Próxima revisión"
   }
 }

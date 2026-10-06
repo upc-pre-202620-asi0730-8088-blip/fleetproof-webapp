@@ -1,19 +1,21 @@
 <script setup>
 import { onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useFleetStore } from '../../../fleet/application/fleet.store.js';
-import { useResolutionStore } from '../../../resolution/application/resolution.store.js';
+import { useVehicleStore } from '../../../vehicle-information/application/vehicle.store.js';
+import { useResolutionStore } from '../../../fleet-management/application/resolution.store.js';
 import RiskTag from '../components/risk-tag.vue';
+import { useMonitoringStore } from '../../../vehicle-monitoring/application/monitoring.store.js';
 const { t } = useI18n();
-const fleet = useFleetStore();
+const fleet = useVehicleStore();
 const resolution = useResolutionStore();
+const monitoring = useMonitoringStore();
 const stats = computed(() => [
   { label: 'total', value: fleet.vehicles.length, icon: 'pi-car' },
   { label: 'critical', value: fleet.criticalCount, icon: 'pi-exclamation-triangle' },
-  { label: 'monitored', value: fleet.vehicles.filter(v => v.monitored).length, icon: 'pi-eye' },
+  { label: 'monitored', value: monitoring.monitorings.filter(m => m.status === 'active').length, icon: 'pi-eye' },
   { label: 'open', value: resolution.openCount, icon: 'pi-briefcase' }
 ]);
-onMounted(() => { fleet.fetchVehicles(); resolution.fetchCases(); });
+onMounted(() => { fleet.fetchVehicles(); resolution.fetchCases(); monitoring.fetchMonitoring(); });
 </script>
 <template>
   <div class="page-heading"><div><h1>{{ t('dashboard.title') }}</h1><p>{{ t('dashboard.subtitle') }}</p></div><router-link class="p-button" to="/app/vehicles"><i class="pi pi-car"></i>{{ t('dashboard.goFleet') }}</router-link></div>
@@ -34,4 +36,3 @@ onMounted(() => { fleet.fetchVehicles(); resolution.fetchCases(); });
     </aside>
   </div>
 </template>
-

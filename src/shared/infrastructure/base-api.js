@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { iamInterceptor } from '../../iam/infrastructure/iam.interceptor.js';
+import { iamInterceptor } from '../../user-management/infrastructure/iam.interceptor.js';
 
 export class BaseApi {
   #http;
