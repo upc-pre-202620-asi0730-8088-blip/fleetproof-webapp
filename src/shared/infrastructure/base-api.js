@@ -10,6 +10,14 @@ export class BaseApi {
       headers: { 'Content-Type': 'application/json' }
     });
     this.#http.interceptors.request.use(iamInterceptor);
+    this.#http.interceptors.response.use(response => response, error => {
+      if (error.response?.status === 401 && error.config?.headers?.Authorization) {
+        localStorage.removeItem('fleetproof-token');
+        localStorage.removeItem('fleetproof-session');
+        if (window.location.pathname !== '/login') window.location.replace('/login');
+      }
+      return Promise.reject(error);
+    });
   }
   get http() { return this.#http; }
 }

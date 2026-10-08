@@ -1,5 +1,6 @@
 import jsonServer from 'json-server';
 import fs from 'fs';
+import { installUserAccess } from './user-access.js';
 
 export class MockApiServer {
     #config;
@@ -31,6 +32,7 @@ export class MockApiServer {
         app.use(jsonServer.defaults());
         app.use(jsonServer.bodyParser);
         app.get('/api/v1/health', (_req, res) => res.json({status: 'ok', time: new Date().toISOString()}));
+        installUserAccess(app, router);
         app.use(jsonServer.rewriter({'/api/v1/authentication/sign-up': '/users', '/api/v1/*': '/$1', '/api/v1': '/'}));
         app.use(router);
 
