@@ -1,4 +1,5 @@
 {
+  "paymentUi": {"demo":"Simulated payment", "notice":"No money is charged and no banking details are requested.", "showQr":"Show QR", "qrAlt":"Demo QR, not valid for payments", "notPayment":"Fictional QR · Do not transfer money", "confirm":"Confirm payment", "continue":"Continue to simulated payment", "individual":"Individual report payment", "platePayment":"One query for plate {plate}. Each new individual report requires its own simulated payment confirmation.", "subscription":"Fleet subscription", "plan":"Query plan", "weekly":"Weekly", "monthly":"Monthly", "planPayment":"{plan} plan: periodic queries for your fleet vehicles. Demo confirmation, no real charges.", "activated":"Simulated payment confirmed. Plan activated."},
   "planUi": {"demo":"Demo limits per account: 50 vehicles, 100 reports and 25 active monitors."},
   "monitoringUi": {"pause":"Pause"},
   "importUi": {"button":"Import CSV", "summary":"Accepted: {accepted}. Rejected: {rejected}."},

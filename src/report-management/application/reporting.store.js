@@ -26,5 +26,12 @@ export const useReportingStore = defineStore('reporting', () => {
     reports.value = reports.value.map(item => item.id === saved.id ? saved : item);
     return saved;
   }
-  return { reports, loading, error, fetchReports, requestReport, saveReport };
+  async function confirmIndividualPayment(plate) {
+    if (!/^[A-Z0-9]{3}-[A-Z0-9]{3}$/.test(plate)) throw new Error('errors.plate');
+    const report = new Report({plate, requestedAt:new Date().toISOString(), status:'published', serviceType:'individual', paymentStatus:'completed', findings:demoFindings(plate)});
+    const saved = ReportAssembler.toEntityFromResource((await api.createReport(ReportAssembler.toResourceFromEntity(report))).data);
+    reports.value = [...reports.value, saved];
+    return saved;
+  }
+  return { reports, loading, error, fetchReports, requestReport, saveReport, confirmIndividualPayment };
 });

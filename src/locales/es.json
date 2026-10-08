@@ -1,4 +1,5 @@
 {
+  "paymentUi": {"demo":"Pago simulado", "notice":"No se cobrará dinero ni se solicitan datos bancarios.", "showQr":"Mostrar QR", "qrAlt":"QR de demostración, no válido para pagos", "notPayment":"QR ficticio · No realizar transferencias", "confirm":"Confirmar pago", "continue":"Continuar al pago simulado", "individual":"Pago de reporte individual", "platePayment":"Una consulta para la placa {plate}. Cada nuevo reporte individual requiere su propia confirmación de pago simulada.", "subscription":"Suscripción de flota", "plan":"Plan de consultas", "weekly":"Semanal", "monthly":"Mensual", "planPayment":"Plan {plan}: consultas periódicas para los vehículos de tu flota. Confirmación de demostración, sin cobros reales.", "activated":"Pago simulado confirmado. Plan activado."},
   "planUi": {"demo":"Cuotas de demostración por cuenta: 50 vehículos, 100 reportes y 25 monitoreos activos."},
   "monitoringUi": {"pause":"Pausar"},
   "importUi": {"button":"Importar CSV", "summary":"Aceptados: {accepted}. Rechazados: {rejected}."},

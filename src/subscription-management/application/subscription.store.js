@@ -11,7 +11,7 @@ export const useSubscriptionStore = defineStore('subscriptions', () => {
     try { subscriptions.value = (await api.getAll()).data.map(Assembler.toEntityFromResource); }
     catch { error.value = 'errors.load'; }
   }
-  function isActive(service) { return subscriptions.value.some(s => s.service === service && s.status === 'active' && s.paymentStatus === 'completed'); }
+  function isActive(service) { return subscriptions.value.some(s => (s.service === service || (service === 'monitoring' && s.service === 'fleet')) && s.status === 'active' && s.paymentStatus === 'completed'); }
   async function save(subscription) {
     const saved = Assembler.toEntityFromResource((await api.save(Assembler.toResourceFromEntity(subscription))).data);
     subscriptions.value = [...subscriptions.value.filter(s => s.id !== saved.id), saved]; return saved;
@@ -25,5 +25,9 @@ export const useSubscriptionStore = defineStore('subscriptions', () => {
     if (!current || current.status === 'active') return;
     await save(new Subscription({...Assembler.toResourceFromEntity(current), paymentStatus: success ? 'completed' : 'failed', status: success ? 'active' : 'pending'}));
   }
-  return {subscriptions, error, fetchSubscriptions, isActive, request, simulatePayment};
+  async function confirmPlanPayment(plan) {
+    const current = subscriptions.value.find(item => item.service === 'fleet' && item.status !== 'cancelled');
+    return save(new Subscription({id:current?.id, service:'fleet', plan, status:'active', paymentStatus:'completed'}));
+  }
+  return {subscriptions, error, fetchSubscriptions, isActive, request, simulatePayment, confirmPlanPayment};
 });
