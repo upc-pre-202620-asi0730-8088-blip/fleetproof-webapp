@@ -1,4 +1,10 @@
 {
+  "planUi": {"demo":"Cuotas de demostración por cuenta: 50 vehículos, 100 reportes y 25 monitoreos activos."},
+  "monitoringUi": {"pause":"Pausar"},
+  "importUi": {"button":"Importar CSV", "summary":"Aceptados: {accepted}. Rechazados: {rejected}."},
+  "comparisonUi": {"unchanged":"Sin cambios"},
+  "profile": {"title":"Mi perfil", "details":"Datos de acceso", "current":"Contraseña actual", "newPassword":"Nueva contraseña (opcional, mínimo 8 caracteres)", "security":"Seguridad", "passwordNotice":"Al cambiar la contraseña se cerrarán todas las sesiones de esta cuenta.", "delete":"Eliminar cuenta", "deleteNotice":"Elimina tu cuenta y todos tus vehículos, reportes, flotas y evidencias. Ingresa tu contraseña actual para continuar.", "confirm":"Esta acción es irreversible. Se eliminarán la cuenta y todos sus datos. ¿Confirmas la eliminación?", "denied":"Verifica tu contraseña actual. La cuenta de demostración tiene restricciones.", "adminNotice":"El nombre etepepe está reservado. La cuenta admin de demostración no puede eliminarse."},
+  "workspaceUi": {"vehicles":"Vehículos", "download":"Descargar PDF", "sources":"Fuentes consultadas", "demo":"Reporte de demostración · Datos ficticios", "sourceVehicle":"Consulta Vehicular", "sourceSoat":"SOAT", "sourceAccidents":"SBS Accidentes", "quick":"Acciones rápidas", "published":"Publicado", "publish":"Publicar reporte", "reject":"Solicitar corrección", "compare":"Comparar versiones", "noVersion":"No existe una versión anterior para comparar."},
   "auth": {
     "signIn": "Iniciar sesión",
     "signUp": "Crear cuenta",
@@ -44,6 +50,7 @@
     "low": "Sin novedad"
   },
   "status": {
+    "published": "Publicado",
     "draft": "Borrador",
     "reviewed": "Revisado",
     "open": "Abierto",

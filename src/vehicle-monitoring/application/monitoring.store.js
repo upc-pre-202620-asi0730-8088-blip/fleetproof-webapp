@@ -34,5 +34,13 @@ export const useMonitoringStore=defineStore('vehicle-monitoring',()=>{
       }
     }catch(e){error.value=e.message.startsWith('contexts.')?e.message:'errors.load';}finally{busy.value=false;}
   }
-  return {monitorings,alerts,error,busy,fetchMonitoring,register,check};
+  async function toggle(id) {
+    const entry = monitorings.value.find(item => item.id === id);
+    if (!entry) return;
+    if (entry.status !== 'active') requireSubscription();
+    const updated = new VehicleMonitoring({...M.toResourceFromEntity(entry), status:entry.status === 'active' ? 'inactive' : 'active'});
+    await api.monitorings.update(id, M.toResourceFromEntity(updated));
+    monitorings.value = monitorings.value.map(item => item.id === id ? updated : item);
+  }
+  return {monitorings,alerts,error,busy,fetchMonitoring,register,check,toggle};
 });

@@ -10,9 +10,11 @@ import RiskTag from '../../../shared/presentation/components/risk-tag.vue';
 const { t } = useI18n(); const toast = useToast(); const store = useResolutionStore(); const fleet = useVehicleStore();
 const visible = ref(false); const form = ref(CaseAssembler.toResourceFromEntity(new ResolutionCase())); const saving = ref(false); const error = ref('');
 const filter = ref(null);
+const selected = ref(null), severityFilter = ref(null);
 const statuses = computed(() => ['open','inProgress','resolved'].map(value => ({value,label:t('status.' + value)})));
 const severities = computed(() => ['high','medium','low'].map(value => ({value,label:t('risk.' + value)})));
-const filtered = computed(() => store.cases.filter(item => !filter.value || item.status === filter.value));
+const filtered = computed(() => store.cases.filter(item => (!filter.value || item.status === filter.value) && (!severityFilter.value || item.severity === severityFilter.value)));
+const detail = computed(() => store.cases.find(item => item.id === selected.value) || filtered.value[0]);
 const plateOptions = computed(() => fleet.vehicles.map(vehicle => vehicle.plate));
 function open(item) { form.value = CaseAssembler.toResourceFromEntity(new ResolutionCase(item)); error.value = ''; visible.value = true; }
 async function save() {
@@ -31,16 +33,17 @@ onMounted(() => { store.fetchCases(); fleet.fetchVehicles(); });
 </script>
 <template>
   <div class="page-heading"><h1>{{ t('case.title') }}</h1><pv-button icon="pi pi-plus" :label="t('case.add')" @click="open()" /></div>
-  <div class="filters"><pv-select v-model="filter" :options="statuses" option-label="label" option-value="value" show-clear :placeholder="t('case.status')" :aria-label="t('case.status')" /></div>
+  <div class="filters"><pv-select v-model="filter" :options="statuses" option-label="label" option-value="value" show-clear :placeholder="t('case.status')" :aria-label="t('case.status')" /><pv-select v-model="severityFilter" :options="severities" option-label="label" option-value="value" show-clear :placeholder="t('case.severity')" :aria-label="t('case.severity')" /></div>
   <pv-message v-if="store.error" severity="error">{{ t(store.error) }}<pv-button text :label="t('common.retry')" @click="store.fetchCases" /></pv-message>
-  <section class="data-panel"><pv-data-table :value="filtered" :loading="store.loading" paginator :rows="10" data-key="id">
+  <div class="report-grid"><section class="data-panel"><pv-data-table :value="filtered" :loading="store.loading" paginator :rows="10" data-key="id" @row-click="selected = $event.data.id">
     <template #empty>{{ t('common.empty') }}</template>
     <pv-column field="plate" :header="t('vehicle.plate')" /><pv-column field="title" :header="t('case.titleField')" />
     <pv-column :header="t('case.severity')"><template #body="{data}"><RiskTag :risk="data.severity" /></template></pv-column>
     <pv-column field="responsible" :header="t('case.responsible')" /><pv-column field="dueDate" :header="t('case.due')" />
     <pv-column :header="t('case.status')"><template #body="{data}">{{ t('status.' + data.status) }}</template></pv-column>
-    <pv-column :header="t('common.actions')"><template #body="{data}"><pv-button icon="pi pi-pencil" text :title="t('common.edit')" :aria-label="t('common.edit') + ' ' + data.plate" @click="open(data)" /></template></pv-column>
+    <pv-column :header="t('common.actions')"><template #body="{data}"><pv-button icon="pi pi-eye" text :title="t('common.view')" :aria-label="t('common.view') + ' ' + data.plate" @click="selected = data.id" /></template></pv-column>
   </pv-data-table></section>
+  <aside v-if="detail" class="report-sidebar"><h2>{{ detail.plate }}</h2><RiskTag :risk="detail.severity" /><p>{{ detail.title }}</p><dl><dt>{{ t('case.responsible') }}</dt><dd>{{ detail.responsible || '—' }}</dd><dt>{{ t('case.due') }}</dt><dd>{{ detail.dueDate || '—' }}</dd><dt>{{ t('case.status') }}</dt><dd>{{ t('status.' + detail.status) }}</dd></dl><p v-if="detail.note">{{ detail.note }}</p><a v-if="detail.evidence" :href="detail.evidence" target="_blank" rel="noopener noreferrer">{{ t('case.evidence') }}</a><pv-button icon="pi pi-pencil" :label="t('common.edit')" @click="open(detail)" /></aside></div>
   <pv-dialog v-model:visible="visible" modal :header="t('case.title')" class="form-dialog" :closable="!saving">
     <form class="form-grid" @submit.prevent="save">
       <label for="case-plate">{{ t('vehicle.plate') }}<pv-select input-id="case-plate" v-model="form.plate" :options="plateOptions" :loading="fleet.loading" /></label>

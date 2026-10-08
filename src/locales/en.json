@@ -1,4 +1,10 @@
 {
+  "planUi": {"demo":"Demo limits per account: 50 vehicles, 100 reports and 25 active monitors."},
+  "monitoringUi": {"pause":"Pause"},
+  "importUi": {"button":"Import CSV", "summary":"Accepted: {accepted}. Rejected: {rejected}."},
+  "comparisonUi": {"unchanged":"No changes"},
+  "profile": {"title":"My profile", "details":"Account details", "current":"Current password", "newPassword":"New password (optional, at least 8 characters)", "security":"Security", "passwordNotice":"Changing your password signs out all sessions for this account.", "delete":"Delete account", "deleteNotice":"Deletes your account and all vehicles, reports, fleets and evidence. Enter your current password to continue.", "confirm":"This action cannot be undone. Your account and all its data will be deleted. Confirm deletion?", "denied":"Check your current password. The demo account has restrictions.", "adminNotice":"The username etepepe is reserved. The demo administrator cannot be deleted."},
+  "workspaceUi": {"vehicles":"Vehicles", "download":"Download PDF", "sources":"Sources checked", "demo":"Demonstration report · Fictional data", "sourceVehicle":"Vehicle Registry", "sourceSoat":"SOAT", "sourceAccidents":"SBS Accidents", "quick":"Quick actions", "published":"Published", "publish":"Publish report", "reject":"Request correction", "compare":"Compare versions", "noVersion":"No previous version is available for comparison."},
   "auth": {
     "signIn": "Sign in",
     "signUp": "Create account",
@@ -44,6 +50,7 @@
     "low": "No findings"
   },
   "status": {
+    "published": "Published",
     "draft": "Draft",
     "reviewed": "Reviewed",
     "open": "Open",

@@ -38,12 +38,42 @@ export function installUserAccess(app, router) {
         const session = sessions.get((req.headers.authorization || '').replace(/^Bearer /, ''));
         const user = session && session.expires > Date.now() && router.db.getState().users.find(item => String(item.id) === String(session.id));
         if (!user) return res.status(401).json({message: 'Sign in required'});
+        if (req.path === '/api/v1/account') {
+            if (req.method === 'GET') return res.json({id: user.id, username: user.username, role: user.role || 'user'});
+            if (!['PATCH', 'DELETE'].includes(req.method)) return res.sendStatus(405);
+            if (req.body.currentPassword !== user.password) return res.status(403).json({message: 'Current password is incorrect'});
+            if (req.method === 'DELETE') {
+                if (user.role === 'admin') return res.status(403).json({message: 'Demo administrator cannot be deleted'});
+                for (const [collection, records] of Object.entries(router.db.getState())) {
+                    router.db.set(collection, records.filter(record => collection === 'users' ? String(record.id) !== String(user.id) : String(record.userId) !== String(user.id))).write();
+                }
+                for (const [token, entry] of sessions) if (entry.id === user.id) sessions.delete(token);
+                return res.sendStatus(204);
+            }
+            const {username, password} = req.body;
+            if (typeof username !== 'string' || !username.trim() || (password && (typeof password !== 'string' || password.length < 8)))
+                return res.status(400).json({message: 'Invalid account details'});
+            if (user.role === 'admin' && username.trim() !== 'etepepe') return res.status(403).json({message: 'Demo administrator username is reserved'});
+            if (router.db.getState().users.some(item => item.id !== user.id && item.username === username.trim()))
+                return res.status(409).json({message: 'Username already exists'});
+            router.db.get('users').find({id: user.id}).assign({username: username.trim(), ...(password ? {password} : {})}).write();
+            if (password) for (const [token, entry] of sessions) if (entry.id === user.id) sessions.delete(token);
+            return res.json({id: user.id, username: username.trim(), role: user.role || 'user', signInRequired: Boolean(password)});
+        }
         const [collection, id, ...nested] = req.path.replace(/^\/api\/v1\/?/, '').split('/');
         if (collection === 'users' || nested.length || !Array.isArray(router.db.getState()[collection]))
             return res.status(403).json({message: 'Forbidden'});
         if (Object.keys(req.query).some(key => key.startsWith('_')))
             return res.status(400).json({message: 'Unsupported query'});
         const records = router.db.getState()[collection];
+        const own = records.filter(item => String(item.userId) === String(user.id));
+        const limits = {vehicles: 50, reports: 100, monitorings: 25};
+        if (req.method === 'POST' && limits[collection]) {
+            const count = collection === 'monitorings' ? own.filter(item => item.status === 'active').length : own.length;
+            if (count >= limits[collection]) return res.status(429).json({message: 'Demo plan limit reached'});
+        }
+        if (collection === 'monitorings' && ['PATCH','PUT'].includes(req.method) && req.body.status === 'active' && own.filter(item => item.status === 'active' && String(item.id) !== id).length >= 25)
+            return res.status(429).json({message: 'Demo plan limit reached'});
         if (id) {
             const record = records.find(item => String(item.id) === id);
             if (!record || String(record.userId) !== String(user.id)) return res.status(404).json({message: 'Not found'});

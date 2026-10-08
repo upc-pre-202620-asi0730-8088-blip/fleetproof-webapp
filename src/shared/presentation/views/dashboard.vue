@@ -33,6 +33,7 @@ onMounted(() => { fleet.fetchVehicles(); resolution.fetchCases(); monitoring.fet
     <aside>
       <section class="data-panel"><div class="panel-heading"><h2>{{ t('dashboard.distribution') }}</h2></div><div class="risk-bars"><div v-for="risk in ['high', 'medium', 'low']" :key="risk"><RiskTag :risk="risk" /><meter :value="fleet.vehicles.filter(v => v.risk === risk).length" :max="Math.max(fleet.vehicles.length, 1)"></meter><span>{{ fleet.vehicles.filter(v => v.risk === risk).length }}</span></div></div></section>
       <section class="data-panel"><div class="panel-heading"><h2>{{ t('dashboard.recent') }}</h2></div><ul class="case-summary"><li v-for="item in resolution.cases.filter(c => c.status !== 'resolved').slice(0, 4)" :key="item.id"><RiskTag :risk="item.severity" /><router-link to="/app/cases"><strong>{{ item.plate }}</strong><span>{{ item.title }}</span></router-link></li><li v-if="!resolution.openCount">{{ t('common.empty') }}</li></ul></section>
+      <section class="data-panel"><div class="panel-heading"><h2>{{ t('workspaceUi.quick') }}</h2></div><div class="quick-actions"><router-link to="/app/vehicles" class="p-button"><i class="pi pi-car"></i>{{ t('dashboard.goFleet') }}</router-link><router-link to="/app/reports" class="p-button p-button-outlined"><i class="pi pi-file"></i>{{ t('nav.reports') }}</router-link><router-link to="/app/cases" class="p-button p-button-outlined"><i class="pi pi-briefcase"></i>{{ t('nav.cases') }}</router-link></div></section>
     </aside>
   </div>
 </template>

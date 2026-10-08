@@ -28,12 +28,20 @@ Las versiones quedan fijadas en package.json y package-lock.json.
 Dashboard, registro y edición de vehículos, búsqueda y filtros, solicitud de reportes, checklist con fuente/fecha/evidencia y casos con cierre respaldado.
 Los datos de mock-api/db.json son simulados. No existen consultas a fuentes oficiales ni cobros.
 Registro, inicio y cierre de sesión, authenticationGuard e iamInterceptor reutilizan el patrón IAM de la guía. FakeSignInEndpoint y sus comandos, recursos y assemblers se extraen directamente de la guía.
-La autenticación es simulada y local: JSON Server almacena contraseñas de prueba sin cifrado. Utilice únicamente credenciales ficticias, nunca contraseñas personales. No existe autorización por rol en el servidor.
+La autenticación es simulada: JSON Server almacena contraseñas de prueba sin cifrado. Utilice únicamente credenciales ficticias, nunca contraseñas personales. La API exige tokens aleatorios y filtra recursos por propietario. No sustituye un backend de producción ni implementa los roles de analista y supervisor.
 En producción IamApi utiliza el endpoint real de autenticación como indica la guía; el despliegue necesita ese backend.
 Para la entrega con Fake API, establecer explícitamente VITE_AUTH_MODE=mock permite utilizar el adapter ficticio también en el build. No implica autenticación segura.
 PrimeVue 5 requiere una licencia personal en VITE_PRIME_UI_LICENSE_KEY dentro de .env.local. No se copia la clave de ejemplo del profesor.
-Cuenta ficticia para la verificación local: usuario `fleetproof.test`, contraseña `Ficticia123!`.
+Cuenta administradora de demostración: usuario `etepepe`, contraseña `12345678`. Se crea al iniciar la API; no puede eliminarse ni cambiar de nombre. Su contraseña se restablece al reiniciar. Las cuentas nuevas empiezan sin los registros del administrador.
 La revisión del reporte es una acción funcional del prototipo; no valida información oficial ni constituye autorización por rol.
+
+## Personalización y reportes
+
+Flota reúne vehículos y gestión de flotas. Perfil permite cambiar nombre, cambiar contraseña validando la actual y eliminar la cuenta con sus recursos mediante confirmación. Cambiar contraseña invalida todas las sesiones.
+
+Los reportes contienen únicamente Consulta Vehicular, SOAT y SBS Accidentes con datos ficticios. El flujo es borrador, revisado y publicado; solo los publicados permiten descargar PDF. jsPDF genera el documento y Papa Parse procesa CSV. El CSV requiere `plate,type,site,owner`; `risk` es opcional (`high`, `medium`, `low`). Se identifican filas inválidas y duplicadas, conservando los registros válidos.
+
+Cuotas provisionales de demostración: 50 vehículos, 100 reportes y 25 monitoreos activos por cuenta. La API rechaza operaciones que exceden esas cuotas. No se procesan pagos reales. Las acciones nuevas de perfil requieren actualizar las historias y el Sprint Backlog del informe.
 
 ## Diseño
 
