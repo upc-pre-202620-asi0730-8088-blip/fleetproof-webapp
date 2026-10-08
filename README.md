@@ -30,6 +30,7 @@ Los datos de mock-api/db.json son simulados. No existen consultas a fuentes ofic
 Registro, inicio y cierre de sesión, authenticationGuard e iamInterceptor reutilizan el patrón IAM de la guía. FakeSignInEndpoint y sus comandos, recursos y assemblers se extraen directamente de la guía.
 La autenticación es simulada y local: JSON Server almacena contraseñas de prueba sin cifrado. Utilice únicamente credenciales ficticias, nunca contraseñas personales. No existe autorización por rol en el servidor.
 En producción IamApi utiliza el endpoint real de autenticación como indica la guía; el despliegue necesita ese backend.
+Para la entrega con Fake API, establecer explícitamente VITE_AUTH_MODE=mock permite utilizar el adapter ficticio también en el build. No implica autenticación segura.
 PrimeVue 5 requiere una licencia personal en VITE_PRIME_UI_LICENSE_KEY dentro de .env.local. No se copia la clave de ejemplo del profesor.
 Cuenta ficticia para la verificación local: usuario `fleetproof.test`, contraseña `Ficticia123!`.
 La revisión del reporte es una acción funcional del prototipo; no valida información oficial ni constituye autorización por rol.
@@ -76,3 +77,7 @@ La separación de los seis contextos no implica que todas las funcionalidades de
 El monitoreo compara datos de JSON Server. Mientras su vista permanece abierta, revisa cada 15 segundos si venció el intervalo configurado y realiza la comparación correspondiente; también permite una revisión manual. Al cerrar la vista se detiene el temporizador. No reemplaza el MonitoringBackgroundWorker del servidor descrito en el reporte ni garantiza ejecución con el navegador cerrado.
 
 Los registros de demostración de suscripciones, flota, asignación y alertas son ficticios. Se verificaron pago fallido sin activación, pago completado con activación, asignación de responsable, revisión sin cambios y alerta con valores anteriores y nuevos.
+
+## Despliegue de la Demostración
+
+Consultar [configuración de Render y Netlify](docs/deployment.md). Netlify no debe apuntar a localhost; el build valida la URL HTTPS cuando se ejecuta en esa plataforma. La API conserva el host local por defecto y admite HOST=0.0.0.0 para Render. Esta preparación no acredita que el despliegue público ya se haya realizado.

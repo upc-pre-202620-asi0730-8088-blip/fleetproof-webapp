@@ -12,8 +12,8 @@ export class MockApiServer {
     }
 
     start() {
-        this.#app.listen(this.#config.port, '127.0.0.1', () => {
-            console.log(`FleetProof Mock API running on http://localhost:${this.#config.port}/api/v1`);
+        return this.#app.listen(this.#config.port, this.#config.host, () => {
+            console.log(`FleetProof Mock API running on ${this.#config.host}:${this.#config.port}/api/v1`);
         });
     }
 

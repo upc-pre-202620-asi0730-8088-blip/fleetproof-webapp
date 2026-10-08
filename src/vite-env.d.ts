@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 interface ImportMetaEnv {
+  readonly VITE_AUTH_MODE?: 'mock' | 'real';
   readonly VITE_FLEETPROOF_API_URL?: string;
   readonly VITE_VEHICLES_ENDPOINT_PATH?: string;
   readonly VITE_REPORTS_ENDPOINT_PATH?: string;

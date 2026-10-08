@@ -26,7 +26,9 @@ export class IamApi extends BaseApi {
      */
     constructor() {
         super();
-        this.#signInEndpoint = import.meta.env.PROD
+        const mockAuthentication = import.meta.env.VITE_AUTH_MODE === 'mock' ||
+            (import.meta.env.DEV && import.meta.env.VITE_AUTH_MODE !== 'real');
+        this.#signInEndpoint = !mockAuthentication
             ? new BaseEndpoint(this, signInEndpointPath)
             : new FakeSignInEndpoint(this, usersEndpointPath);
         this.#signUpEndpoint = new BaseEndpoint(this, signUpEndpointPath);
