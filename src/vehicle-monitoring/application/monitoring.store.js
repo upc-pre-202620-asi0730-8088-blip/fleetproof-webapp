@@ -3,8 +3,8 @@ import { shallowRef, ref } from 'vue';
 import { VehicleMonitoring, MonitoringAlert } from '../domain/model/monitoring.entity.js';
 import { MonitoringAssembler as M, AlertAssembler as A } from '../infrastructure/monitoring.assembler.js';
 import { MonitoringApi } from '../infrastructure/monitoring-api.js';
-import { useSubscriptionStore } from '../../../../../Downloads/FleetProof-frontend/src/subscription-management/application/subscription.store.js';
-import { useVehicleStore as useVehicles } from '../../../../../Downloads/FleetProof-frontend/src/vehicle-information/application/vehicle.store.js';
+import { useSubscriptionStore } from '../../subscription-management/application/subscription.store.js';
+import { useVehicleStore as useVehicles } from '../../vehicle-information/application/vehicle.store.js';
 const api=new MonitoringApi();
 const snapshot=v=>({plate:v.plate, risk:v.risk, site:v.site, owner:v.owner, type:v.type});
 export const useMonitoringStore=defineStore('vehicle-monitoring',()=>{

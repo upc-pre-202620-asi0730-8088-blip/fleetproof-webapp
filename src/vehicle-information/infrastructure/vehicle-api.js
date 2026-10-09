@@ -1,5 +1,5 @@
-import { BaseApi } from '../../../../../Desktop/CICLO 2026-2/Aplicaciones Web/FleetProof-frontend/src/shared/infrastructure/base-api.js';
-import { BaseEndpoint } from '../../../../../Desktop/CICLO 2026-2/Aplicaciones Web/FleetProof-frontend/src/shared/infrastructure/base-endpoint.js';
+import { BaseApi } from '../../shared/infrastructure/base-api.js';
+import { BaseEndpoint } from '../../shared/infrastructure/base-endpoint.js';
 export class VehicleApi extends BaseApi {
   #vehicles;
   constructor() {
@@ -10,4 +10,3 @@ export class VehicleApi extends BaseApi {
   createVehicle(resource) { return this.#vehicles.create(resource); }
   updateVehicle(resource) { return this.#vehicles.update(resource.id, resource); }
 }
-
