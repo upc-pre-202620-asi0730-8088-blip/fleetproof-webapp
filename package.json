@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1",
-    "server": "node mock-api/server.js"
+    "preview": "vite preview --host 127.0.0.1"
   },
   "engines": {
     "node": ">=24.20.0"

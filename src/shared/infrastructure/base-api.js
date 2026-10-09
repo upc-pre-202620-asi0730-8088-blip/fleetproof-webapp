@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { iamInterceptor } from '../../user-management/infrastructure/iam.interceptor.js';
 
 export class BaseApi {
   #http;
@@ -9,7 +8,6 @@ export class BaseApi {
       timeout: 10000,
       headers: { 'Content-Type': 'application/json' }
     });
-    this.#http.interceptors.request.use(iamInterceptor);
     this.#http.interceptors.response.use(response => response, error => {
       if (error.response?.status === 401 && error.config?.headers?.Authorization) {
         localStorage.removeItem('fleetproof-token');
