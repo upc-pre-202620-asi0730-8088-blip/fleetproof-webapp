@@ -2,8 +2,8 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useMonitoringStore } from '../../application/monitoring.store.js';
-import { useVehicleStore as useVehicles } from '../../../../../../Downloads/FleetProof-frontend/src/vehicle-information/application/vehicle.store.js';
-import { useSubscriptionStore } from '../../../../../../Downloads/FleetProof-frontend/src/subscription-management/application/subscription.store.js';
+import { useVehicleStore as useVehicles } from '../../../vehicle-information/application/vehicle.store.js';
+import { useSubscriptionStore } from '../../../subscription-management/application/subscription.store.js';
 import { useRoute } from 'vue-router';
 const store=useMonitoringStore(), vehicles=useVehicles(), subscriptions=useSubscriptionStore(), {t}=useI18n();
 const vehicleId=ref(), interval=ref(60);

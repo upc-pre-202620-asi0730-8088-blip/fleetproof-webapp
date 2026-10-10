@@ -1,0 +1,9 @@
+import { Vehicle } from '../domain/model/vehicle.entity.js';
+export class VehicleAssembler {
+  static toEntityFromResource(resource) { return new Vehicle(resource); }
+  static toResourceFromEntity(entity) {
+    const { id, plate, type, site, owner, risk, monitored } = entity;
+    return { ...(id !== undefined ? { id } : {}), plate, type, site, owner, risk, monitored };
+  }
+  static toEntitiesFromResponse(response) { return response.data.map(resource => this.toEntityFromResource(resource)); }
+}
