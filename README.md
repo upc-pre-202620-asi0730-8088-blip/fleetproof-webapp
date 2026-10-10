@@ -20,4 +20,4 @@ Aplicacion Vue / Vite, PrimeVue, Pinia e i18n con seis bounded contexts integrad
 
 `develop` integra los modulos del equipo, las rutas y los componentes compartidos. Cada integrante conserva su identidad real en sus commits.
 
-Netlify debe publicar `develop`, con `npm run build` y directorio `dist`. Configurar `VITE_FLEETPROOF_API_URL` con la URL HTTPS de Render terminada en `/api/v1`, `VITE_AUTH_MODE=mock` y la licencia mediante `VITE_PRIME_UI_LICENSE_KEY`, nunca en Git. Pagos, fuentes y notificaciones son simulados; no representan servicios reales ni almacenamiento durable.
+Las versiones se integran en `main` mediante ramas `release/*` (Gitflow). Netlify debe publicar `main`, con `npm run build` y directorio `dist`. Configurar `VITE_FLEETPROOF_API_URL=https://fleetproof-mock-platform.onrender.com/api/v1`, `VITE_AUTH_MODE=mock` y la licencia mediante `VITE_PRIME_UI_LICENSE_KEY`, nunca en Git. En local, copiar `.env.example` a `.env.local` y completar los valores allí. Ver `docs/deployment.md`. Pagos, fuentes y notificaciones son simulados; no representan servicios reales ni almacenamiento durable.
